@@ -19,7 +19,7 @@ public class Title {
         totalAssessment++;
     }
 
-    public double avarageRating(){
+    public double averageRating(){
         return sumRating / totalAssessment;
     }
 

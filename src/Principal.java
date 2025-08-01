@@ -1,6 +1,9 @@
+import java.nio.file.DirectoryStream.Filter;
+import br.com.streaming.calculator.FilterRecomendation;
 import br.com.streaming.calculator.CalculatorOfTime;
 import br.com.streaming.model.Film;
 import br.com.streaming.model.Serie;
+import br.com.streaming.model.Episodes;
 
 public class Principal {
     public static void main(String[] args) {
@@ -16,7 +19,7 @@ public class Principal {
        myFilm.rating(9.5);
 
        System.out.println("Total de avaliações: " + myFilm.getTotalAssessment());
-       System.out.println("Média das avaliações: " + myFilm.avarageRating());
+       System.out.println("Média das avaliações: " + myFilm.averageRating());
 
        // Serie
        Serie supernatural = new Serie();
@@ -30,7 +33,6 @@ public class Principal {
 
        System.out.println("Duração toral: " + supernatural.getDurationInMinutes() + " minutos");
 
-
        // Outro filme
        Film film2 = new Film();
        film2.setName("Monster Inc.");
@@ -43,7 +45,7 @@ public class Principal {
        film2.rating(9);
 
        System.out.println("Total de avaliações: " + film2.getTotalAssessment());
-       System.out.println("Média das avaliações: " + film2.avarageRating());
+       System.out.println("Média das avaliações: " + film2.averageRating());
 
        // Calculadora de tempo
        CalculatorOfTime calculator = new CalculatorOfTime();
@@ -51,5 +53,15 @@ public class Principal {
        calculator.include(film2);
        calculator.include(supernatural);
        System.out.println(calculator.getTimeTotal() + " minutos");
+
+       // Filtro de recomendação
+       FilterRecomendation filter = new FilterRecomendation(); 
+       filter.filter(myFilm);
+
+       Episodes episodes = new Episodes();
+       episodes.setNumber(0);
+       episodes.setTitle("Pilot");
+       episodes.setTotalViews(100);
+       filter.filter(episodes);
     }
 }
